@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Item IDs</h1>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        <pre id="itemIds">{% for id in item_ids -%}.additem {{ id }}
+{% endfor -%}</pre>
+        <script>
+            function copyToClipboard() {
+                var text = document.getElementById('itemIds').innerText;
+                var textarea = document.createElement('textarea');
+                textarea.id = 'tempElement';
+                textarea.style.height = 0;
+                document.body.appendChild(textarea);
+                textarea.value = text;
+                var selector = document.querySelector('#tempElement');
+                selector.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+        </script>
+    </body>
+</html>
+
